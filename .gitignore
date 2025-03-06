@@ -1,0 +1,7 @@
+env
+__pycache__
+media
+db.sqlite3
+
+superuser.txt
+tutoral.txt
