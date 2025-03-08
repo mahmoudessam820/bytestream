@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+
+
+{% block content %} 
+
+
+<div class="min-h-screen bg-gray-900 flex flex-col items-center justify-center">
+
+    <p class="text-white text-lg mb-8 richtext">
+        {{ page.thank_you_text|richtext }}🙏
+    </p>
+
+</div>
+
+{% endblock %}

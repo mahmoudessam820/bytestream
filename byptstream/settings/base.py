@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     "search",
     "site_settings",
     "blog",
+    "contact",
     
     # Wagtail apps
     "wagtail.contrib.forms",
