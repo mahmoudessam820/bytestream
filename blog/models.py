@@ -30,7 +30,11 @@ class BlogIndexPage(Page):
         context = super().get_context(request)
         posts = BlogPage.objects.live().public().order_by('-first_published_at')
         page = request.GET.get('page', 1)
-        print(posts, '+++++++')
+        tag = request.GET.get('tag', None)
+
+        if tag:
+            posts = posts.filter(tags__slug__in=[tag])
+
         # Pagination
         paginator = Paginator(posts, 10)
         try:
@@ -101,8 +105,12 @@ class BlogPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context["posts"] = BlogPage.objects.live().public().order_by('-first_published_at')[:10]
+        all_posts = BlogPage.objects.live().public().order_by('-first_published_at')
+
+        context["all_posts"] = all_posts
+
         return context
+
 
     class Meta(Page.Meta):
         ordering = ['-first_published_at']  
