@@ -2,14 +2,16 @@
 
 ## Overview
 
-ByteStream is a modern personal blog platform that shares insights, tutorials, and news about web development, databases, and DevOps. Built with Django and Wagtail, ByteStream provides a seamless and user-friendly content management experience, allowing you to publish and manage your articles efficiently.
+ByteStream is a modern personal blog 📝 platform that shares insights, tutorials, and news about web development, databases, and DevOps. Built with Django and Wagtail, ByteStream provides a seamless and user-friendly content management experience, allowing you to publish and manage your articles efficiently.
 
 
 ## Site Screenshots:
 
 | **Homepage**  | **Blog**  | **Page-Detales**  |
 |:---:|:---:|:---:|
-| ![]()| ![]() | ![]() |
+| ![](screenshots/home.png)| ![](screenshots/blog.png) | ![](screenshots/blog-details.png) |
+| **About**  | **Contact**  | 
+| ![](screenshots/about.png)| ![](screenshots/contact.png) | 
 
 
 ## Getting Started

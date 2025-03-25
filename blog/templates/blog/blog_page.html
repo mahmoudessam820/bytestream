@@ -18,10 +18,10 @@
 
             <div class="flex flex-wrap mt-1 gap-2">
 
-                {% for orderable in page.categories.all %}
+                {% for tag in page.tags.all  %}
 
-                    <a href="#" class="bg-{{ orderable.category.color }}-200 hover:bg-{{ orderable.category.color }}-300 py-1 px-2 rounded-lg text-sm font-semibold ">
-                        {{ orderable.category.name }}
+                    <a href="/blog/?tag={{ tag.slug }}" class="bg-orange-200 hover:bg-orange-300 py-1 px-2 rounded-lg text-sm font-semibold ">
+                        {{ tag }}
                     </a>
 
                 {% endfor %}
@@ -33,7 +33,7 @@
 
     <!--blog-content-->
     <div class="bg-gray-900 py-8">
-
+        
         <div class="container mx-auto px-4 flex flex-col md:flex-row">
 
             <!-- start main blogs section -->
@@ -61,30 +61,10 @@
                     <h2 class="text-xl font-bold text-white mb-4">Recent Posts</h2>
                     <ul class="list-none">
 
-                        {% for post in posts %}
+                        {% for post in all_posts %}
                             <li class="mb-2">
-                                <a href="{{ post.url }}" class="text-white font-bold-[600] hover:text-gray-100">{{ post.title }}</a>
+                                <a href="{{ post.url }}" class="text-white font-semibold hover:text-orange-300">{{ post.title }}</a>
                             </li>
-                        {% endfor %}
-
-                    </ul>
-
-                </div>
-
-                <!-- start categories --> 
-                <div class="p-4 mt-4 bg-gray-900 border rounded-md border-orange-500 ">
-
-                    <h2 class="text-xl font-bold text-white mb-4">Categories</h2>
-                    <ul class="list-none">
-
-                        {% for orderable in page.categories.all %}
-
-                            <li class="mb-2">
-                                <a href="#" class="bg-{{ orderable.category.color }}-200 hover:bg-{{ orderable.category.color }}-300 py-1 px-2 rounded-lg text-sm font-semibold ">
-                                    {{ orderable.category.name }}
-                                </a>
-                            </li>
-
                         {% endfor %}
 
                     </ul>

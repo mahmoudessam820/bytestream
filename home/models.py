@@ -9,7 +9,7 @@ from blog.models import BlogPage
 
 
 class HomePage(Page):
-    
+
     summary = models.TextField(blank=True, null=True)
 
     content_panels = Page.content_panels + [
@@ -18,8 +18,12 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        all_blog_posts = BlogPage.objects.live().public().order_by('-first_published_at')[:15]
+        all_blog_posts = BlogPage.objects.live().public().order_by('-first_published_at')
         page = request.GET.get('page', 1)
+        tag = request.GET.get('tag', None)
+
+        if tag:
+            all_blog_posts = all_blog_posts.filter(tags__slug__in=[tag])
 
         # Pagination
         paginator = Paginator(all_blog_posts, 10)  
@@ -34,6 +38,8 @@ class HomePage(Page):
 
         for post in context["blog_posts"]:
             post.image = None
+            post.tags = post.tags.all()
+
             for block in post.body:
                 if block.block_type == 'image':
                     post.image = block.value

@@ -15,7 +15,7 @@ from wagtail.snippets.models import register_snippet
 
 
 class BlogIndexPage(Page):
-    max_count = 1 
+    
     parent_page_types = ['home.HomePage']
 
     summary = models.TextField(blank=True, max_length=500)
@@ -64,6 +64,7 @@ class BlogPageTag(TaggedItemBase):
 
 
 class BlogPage(Page):
+    
     parent_page_types = ['blog.BlogIndexPage']
 
     intro = models.CharField(max_length=500, blank=True, null=True)

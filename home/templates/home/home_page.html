@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static wagtailimages_tags wagtailcore_tags %}
 
+{% block title %}
+    Home
+{% endblock %}
+
 
 {% block content %}
 
@@ -42,7 +46,7 @@
             <p class="mt-6 text-lg leading-8 text-gray-300">{{ page.summary }}</p>
 
             <div class="mt-5 flex items-center justify-center gap-x-6">
-                <a href="{{ blog.url }}"
+                <a href="/blog"
                 class="rounded-md bg-sky-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
                 rel="noreferrer">Explore Now →</a>
             </div>
@@ -65,7 +69,7 @@
                 <!-- Page Header -->
                 <h1 class="text-4xl text-white font-bold mb-2">Articles</h1>
                 <p class="text-lg text-gray-400 mb-8">View the latest news on Blogger</p>
-    
+
                 <!-- Articles List -->
                 <div class="space-y-8">
 
@@ -89,14 +93,16 @@
 
                             <div>
 
-                                {% for orderable in post.categories.all %}
-                                    <a href="#" class="bg-{{ orderable.category.color }}-200 hover:bg-{{ orderable.category.color }}-300 py-1 px-2 mr-1 mb-1 rounded-lg text-sm font-semibold ">
-                                        {{ orderable.category.name }}
+                                {% for tag in post.tags %}
+                                    <a href="/blog/?tag={{ tag.slug }}" class="bg-sky-500 hover:bg-sky-400 text-white py-1 px-2 mr-1 mb-1 rounded-lg text-sm font-semibold ">
+                                        {{ tag }} 
                                     </a>
                                 {% endfor %}
+
                                 <a href="{{ post.url }}">
                                     <h2 class="text-2xl text-white font-bold mb-2">{{ post.title }}</h2>
                                 </a>
+
                                 <p class="text-gray-400 mb-2">
                                     {{ post.author }}
                                     <span class="mx-2">•</span>
@@ -173,4 +179,4 @@
 </div>
 <!-- end article section -->
 
-{% endblock content %}
+{% endblock %}
